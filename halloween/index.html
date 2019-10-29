@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico" />
+<script>
+var x = 75;
+var y = 75;
+var xsecond = x-10;
+var ysecond = y-10;
+var tenSecondAudio;
+var audiosource;
+var audiosourcesecond;
+var didIPlay = false;
+var imagesource = "imagenes/wideRoomWithASkeletonPartI.png";
+function findCoordinates(event) {
+ x = event.clientX-200;
+ y = event.clientY-1;
+ xsecond = x-50;
+ ysecond = y-50;
+if (x>=420 && x<=445 && y>=259 && y<=289) {
+document.getElementById("illuminatedBackground").src=imagesource;
+tenSecondAudio = document.getElementById("timeControlSilence");
+audiosource = document.getElementById("screamfirst");
+if (!didIPlay) {
+didIPlay = true;
+tenSecondAudio.play();
+audiosource.play();
+document.getElementById("message").innerHTML = "You have awakened the skeleton order!";
+tenSecondAudio.onended = function(){
+imagesource = "imagenes/wideRoomWithASkeletonPartII.png";
+document.getElementById("message").innerHTML = "";
+document.getElementById("wholeRoom").src=imagesource;    
+document.getElementById("illuminatedBackground").src=imagesource;
+audiosource = document.getElementById("screamlast");
+audiosourcesecond = document.getElementById("backgroundMusic");
+audiosourcesecond.pause();
+audiosource.play();
+audiosource.onended = function(){
+location.href = 'invitationcard.html'    
+}
+}
+}
+}
+// document.getElementById("illuminatedBackground").style.clip = "rect(0px "+x+"px "+y+"px 0px)"; 
+document.getElementById("illuminatedBackground").style.clip = "rect("+ysecond+"px "+x+"px "+y+"px "+xsecond+"px)"; 
+}   
+function showBackground() {  
+document.getElementById("illuminatedBackground").style.visibility = "visible";
+}    
+function hideBackground() {
+document.getElementById("illuminatedBackground").style.visibility = "hidden";
+}    
+</script>
+<style>
+body {
+background-color:rgba(0, 0, 0, 1)    
+}
+#wrapper {
+margin-right:25%;
+margin-left:15%;
+}
+p {
+position:absolute;    
+}
+#illuminatedBackground {
+position:absolute;
+top:8px; 
+left:212px; 
+visibility:hidden; 
+}
+</style>
+    <meta charset="UTF-8">
+    <!--Non responsive, meant only for computers-->
+    <title>Halloween Project. Pablo Luis Molina Blanes. 1º DAM</title>
+</head>
+<body onmousemove="findCoordinates(event)" id="body">
+    <audio autoplay loop id="backgroundMusic">
+    <source src="sonidos/background.ogg" type="audio/ogg">
+    <source src="sonidos/background.wav" type="audio/wav">
+    <source src="sonidos/background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.   
+    </audio>
+    <audio id="timeControlSilence">
+            <source src="sonidos/silenceFor10Sec.ogg" type="audio/ogg">
+            <source src="sonidos/silenceFor10Sec.wav" type="audio/wav">
+            <source src="sonidos/silenceFor10Sec.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.      
+    </audio>
+    <audio id="screamfirst">
+        <source src="sonidos/scream.wav" type="audio/wav">
+        <source src="sonidos/scream.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.      
+</audio>
+<audio id="screamlast">
+    <source src="sonidos/loudYell.wav" type="audio/wav">
+        Your browser does not support the audio element.      
+</audio>
+<div id="wrapper">
+<img src="imagenes/darkWideRoomEdited.png" alt="Scary wide dark room" style="position:relative;" id="wholeRoom" onmouseover="showBackground()" onmousemove="findCoordinates(event)" onmouseout="hideBackground()"/>
+<img src="imagenes/wideRoomEdited.png" alt="Scary wide illuminated room" id="illuminatedBackground" onmouseover="showBackground()" onmouseout="hideBackground()"/>
+<p style="position:absolute;top:0px; color:white;" id="message">Don't point your lantern to the front...</p>
+</div>
+</body>
+</html>
