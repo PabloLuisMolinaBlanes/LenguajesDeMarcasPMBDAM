@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico" />
+<script type="text/javascript" src="javascripts/script.js"></script>
+<link rel="stylesheet" href="estilos/index.css" />
+    <meta charset="UTF-8">
+    <!--Non responsive, meant only for computers-->
+    <title>Halloween Project. Pablo Luis Molina Blanes. 1º DAM</title>
+</head>
+<body onmousemove="findCoordinates(event)" id="body">
+    <audio autoplay loop id="backgroundMusic">
+    <source src="sonidos/background.ogg" type="audio/ogg">
+    <source src="sonidos/background.wav" type="audio/wav">
+    <source src="sonidos/background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.   
+    </audio>
+    <audio id="timeControlSilence">
+            <source src="sonidos/silenceFor10Sec.ogg" type="audio/ogg">
+            <source src="sonidos/silenceFor10Sec.wav" type="audio/wav">
+            <source src="sonidos/silenceFor10Sec.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.      
+    </audio>
+    <audio id="screamfirst">
+        <source src="sonidos/scream.wav" type="audio/wav">
+        <source src="sonidos/scream.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.      
+</audio>
+<audio id="screamlast">
+    <source src="sonidos/loudYell.wav" type="audio/wav">
+        Your browser does not support the audio element.      
+</audio>
+<div id="wrapper">
+<img src="imagenes/darkWideRoomEdited.png" alt="Scary wide dark room, can fail with screen readers" style="position:relative;" id="wholeRoom" onmouseover="showBackground()" onmousemove="findCoordinates(event)" onmouseout="hideBackground()"/>
+<img src="imagenes/wideRoomEdited.png" alt="Scary wide illuminated room, can fail with screen readers" id="illuminatedBackground" onmouseover="showBackground()" onmouseout="hideBackground()"/>
+<p style="position:absolute;top:0px; color:white;" id="message">Don't point your lantern to the front...</p>
+</div>
+</body>
+</html>
