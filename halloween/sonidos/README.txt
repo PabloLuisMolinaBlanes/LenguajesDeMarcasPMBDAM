@@ -1,1 +1,0 @@
-In the last sound, "lastYell", I did not mean to say "ruthless", it was a script reading error, I meant "reckless".
